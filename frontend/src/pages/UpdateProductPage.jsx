@@ -15,7 +15,7 @@ function UpdateProductPage() {
 
       async function loadProduct(){
         const response = await getProductById(productId)
-        setFormData(response.data)
+        setFormData(response)
     }
 
   const navigate = useNavigate()
@@ -27,15 +27,19 @@ function UpdateProductPage() {
   async function handleSubmit(event){
     event.preventDefault()
 
-    const updatedProduct = await updateProduct(formData)
+    const updatedProduct = await updateProduct(productId,formData)
 
     navigate('/products')
   }
 
+      useEffect(() => {
+      loadProduct()
+    }, [])
+
  return (
     <div>
 
-              <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input 
             type="text" 

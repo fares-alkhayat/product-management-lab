@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_BACK_END_SERVER_URL
+    baseURL: import.meta.env.VITE_BACKEND_SERVER_URL
 })
 
 async function getAllProducts(){
@@ -24,7 +24,7 @@ async function createNewProduct(productBody){
 }
 
 async function updateProduct(productId, productBody){
-    const response = await api.put(`products/${productId}`,productBody)
+    const response = await api.put(`/products/${productId}`,productBody)
 
     return response.data
 }
